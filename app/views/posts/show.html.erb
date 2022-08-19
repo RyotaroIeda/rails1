@@ -28,6 +28,6 @@
 
 <div class="links">
     <%= link_to("スケジュール一覧に戻る", "/") %><br>
-    <%= link_to("スケジュールを編集する", "/posts/#{@post.id}/edit") %>
-
+    <%= link_to("スケジュールを編集する", "/posts/#{@post.id}/edit") %><br>
+    <%= button_to("スケジュールを削除", "/posts/#{@post.id}/destroy") %>
 </div>
