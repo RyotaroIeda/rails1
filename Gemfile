@@ -78,3 +78,6 @@ end
 
 gem 'rails-i18n'
 gem 'pry-rails'
+
+gem 'jquery-rails' 
+gem 'jquery-ui-rails'

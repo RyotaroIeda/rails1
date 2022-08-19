@@ -1,0 +1,33 @@
+<div class="index">
+	<table class="temple_table">
+		<tbody>
+			<tr>
+				<td>ID</td>
+				<td>タイトル</td>
+				<td>開始日</td>
+				<td>終了日</td>
+				<td>終日</td>
+				<td>スケジュール更新日時</td>
+				<td>確認</td>
+				<td>編集</td>
+				<td>削除</td>
+			</tr>
+			<% @posts.each do |post| %>
+			<tr>
+				<td><%= post.id %></td>
+				<td><%= post.title %></td>
+				<td><%= post.start_date %></td>
+				<td><%= post.end_date %></td>
+				<td><%= post.all_date %></td>
+				<td><%= post.updated_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+				<td><%= link_to("確認", "/posts/#{post.id}") %></td>
+				<td><%= link_to("編集", "/posts/#{post.id}/edit") %></td>
+				<td><%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="create_tag">
+<%= link_to("スケジュール新規登録", "/posts/new") %>
+</div>
