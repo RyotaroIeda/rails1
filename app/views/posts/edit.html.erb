@@ -1,20 +1,27 @@
 <h2>スケジュール編集</h2>
 
-<%= form_tag("/posts/#{@post.id}/update") do %>
 <div class="schedule_edit">
+    
+    <% @post.errors.full_messages.each do |message| %>
+        <div class="errors_message">
+        <%= message %>
+        </div>
+    <% end %>
+    
+    <%= form_tag("/posts/#{@post.id}/update") do %>
     <table>
         <tbody>
             <tr>
                 <td>タイトル</td>
-                <td><input name="title" value="<%= @post.title %>"></td>
+                <td><input class="input_form" name="title" value="<%= @post.title %>"></td>
             </tr>
             <tr>
                 <td>開始日</td>
-                <td><input name="start_date" type="date" / value="<%= @post.start_date %>"></td>
+                <td><input class="input_form" name="start_date" type="date" / value="<%= @post.start_date %>"></td>
             </tr>
             <tr>
                 <td>終了日</td>
-                <td><input name="end_date" type="date" / value="<%= @post.end_date %>"></td>
+                <td><input class="input_form" name="end_date" type="date" / value="<%= @post.end_date %>"></td>
             </tr>
             <tr>
                 <td>終日</td>
@@ -22,7 +29,7 @@
             </tr>
             <tr>
                 <td>スケジュールメモ</td>
-                <td><textarea name="text"><%= @post.text %></textarea></td>
+                <td><textarea class="text_form" name="text"><%= @post.text %></textarea></td>
             </tr>
         </tbody>
     </table>
@@ -30,6 +37,6 @@
 
 <div class="submit_button">
 <input type="submit" value="スケジュールの編集を完了する"><br>
-<%= link_to("スケジュール一覧に戻る", "/") %>
+<%= link_to("スケジュール一覧に戻る", "/") %><br>
 <% end %>
 </div>

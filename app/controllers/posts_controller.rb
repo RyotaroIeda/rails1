@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  protect_from_forgery
+  
   def index
     @posts = Post.all.order(created_at: :asc)
   end
@@ -20,9 +22,6 @@ class PostsController < ApplicationController
     if @post.save
       flash[:notice] = "スケジュールを登録しました"
       redirect_to("/")
-    elsif @post.start_date.to_s > @post.end_date.to_s
-      @error_message = "終了日は今日以降の日付で選択してください"
-      render("/posts/new")
     else
       render("posts/new")
     end
@@ -57,6 +56,8 @@ class PostsController < ApplicationController
     flash[:notice] = "スケジュールを削除しました"
     redirect_to("/")
   end
+
+  
 
 end
 

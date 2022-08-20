@@ -1,37 +1,40 @@
-<h2>スケジュール新規作成</h2>
-<% @post.errors.full_messages.each do |message| %>
-<div class="error_form">
-	<%= message %>
-	<%= @error_message %>
+<div class="main_content">
+	<h2>スケジュール新規作成</h2>
+	
+	<% @post.errors.full_messages.each do |message| %>
+		<div class="errors_message">
+		<%= message %>
+		</div>
 	<% end %>
-</div>
-<%= form_tag("/posts/create") do %>
-<table>
-	<tbody>
-		<tr>
-			<td>タイトル</td>
-			<td><input name="title"></td>
-		</tr>
-		<tr>
-			<td>開始日</td>
-			<td><input name="start_date" type="date" /></td>
-		</tr>
-		<tr>
-			<td>終了日</td>
-			<td><input name="end_date" type="date" /></td>
-		</tr>
-		<tr>
-			<td>終日</td>
-			<td><input name="all_date" type="checkbox"><br>終日の場合はチェックを入れます</td>
-		</tr>
-		<tr>
-			<td>スケジュールメモ</td>
-			<td><textarea name="text"></textarea></td>
-		</tr>
-	</tbody>
-</table>
-<div class="submit_button">
-<input type="submit" value="スケジュールを新規登録する"><br>
-<%= link_to("スケジュール一覧に戻る", "/") %>
-<% end %>
+	
+	<%= form_tag("/posts/create") do %>
+	<table>
+		<tbody>
+			<tr>
+				<td>タイトル</td>
+				<td><input class="input_form" name="title"  value="<%= @post.title %>"></td>
+			</tr>
+			<tr>
+				<td>開始日</td>
+				<td><input class="input_form" name="start_date" type="date" / value="<%= @post.start_date %>"></td>
+			</tr>
+			<tr>
+				<td>終了日</td>
+				<td><input class="input_form" name="end_date" type="date" / value="<%= @post.end_date %>"></td>
+			</tr>
+			<tr>
+				<td>終日</td>
+				<td><input name="all_date" type="checkbox"  value="<%= @post.all_date %>"><br>終日の場合はチェックを入れます</td>
+			</tr>
+			<tr>
+				<td>スケジュールメモ</td>
+				<td><textarea class="text_form" name="text"><%= @post.text %></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="submit_button">
+	<input type="submit" value="スケジュールを新規登録する"><br>
+	<%= link_to("スケジュール一覧に戻る", "/") %>
+	<% end %>
+	</div>
 </div>
